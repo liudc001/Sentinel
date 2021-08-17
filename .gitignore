@@ -25,6 +25,8 @@ buildNumber.properties
 .project
 bin/
 
+.factorypath
+
 # System related
 *.DS_Store
 Thumbs.db
