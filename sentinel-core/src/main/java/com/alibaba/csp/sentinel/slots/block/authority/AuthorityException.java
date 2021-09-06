@@ -25,7 +25,12 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
  */
 public class AuthorityException extends BlockException {
 
-    public AuthorityException(String ruleLimitApp) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public AuthorityException(String ruleLimitApp) {
         super(ruleLimitApp);
     }
 

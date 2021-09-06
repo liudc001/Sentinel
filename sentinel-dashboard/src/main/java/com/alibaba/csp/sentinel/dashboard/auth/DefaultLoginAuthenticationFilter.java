@@ -16,7 +16,6 @@
 package com.alibaba.csp.sentinel.dashboard.auth;
 
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.AntPathMatcher;
@@ -76,8 +75,7 @@ public class DefaultLoginAuthenticationFilter implements LoginAuthenticationFilt
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
 
         String servletPath = httpRequest.getServletPath();

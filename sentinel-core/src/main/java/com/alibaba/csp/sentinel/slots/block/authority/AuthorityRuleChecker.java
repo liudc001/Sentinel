@@ -28,6 +28,7 @@ import com.alibaba.csp.sentinel.util.StringUtil;
 final class AuthorityRuleChecker {
 
     static boolean passCheck(AuthorityRule rule, Context context) {
+    	
         String requester = context.getOrigin();
 
         // Empty origin or empty limitApp will pass.

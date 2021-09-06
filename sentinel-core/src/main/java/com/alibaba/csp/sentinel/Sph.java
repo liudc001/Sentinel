@@ -174,8 +174,7 @@ public interface Sph extends SphResourceTypeSupport {
      * @throws BlockException if the block criteria is met
      * @since 1.4.0
      */
-    Entry entryWithPriority(String name, EntryType trafficType, int batchCount, boolean prioritized)
-        throws BlockException;
+    Entry entryWithPriority(String name, EntryType trafficType, int batchCount, boolean prioritized) throws BlockException;
 
     /**
      * Create a protected resource with priority.
@@ -191,6 +190,5 @@ public interface Sph extends SphResourceTypeSupport {
      * @throws BlockException if the block criteria is met
      * @since 1.5.0
      */
-    Entry entryWithPriority(String name, EntryType trafficType, int batchCount, boolean prioritized, Object... args)
-        throws BlockException;
+    Entry entryWithPriority(String name, EntryType trafficType, int batchCount, boolean prioritized, Object... args) throws BlockException;
 }

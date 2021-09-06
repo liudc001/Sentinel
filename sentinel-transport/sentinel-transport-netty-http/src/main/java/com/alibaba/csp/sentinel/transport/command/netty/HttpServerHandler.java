@@ -87,8 +87,7 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<Object> {
         }
     }
 
-    private void handleRequest(CommandRequest request, ChannelHandlerContext ctx, boolean keepAlive)
-        throws Exception {
+    private void handleRequest(CommandRequest request, ChannelHandlerContext ctx, boolean keepAlive) throws Exception {
         String commandName = HttpCommandUtils.getTarget(request);
         // Find the matching command handler.
         CommandHandler<?> commandHandler = getHandler(commandName);

@@ -44,12 +44,13 @@ class MetricsReader {
     boolean readMetricsInOneFileByEndTime(List<MetricNode> list, String fileName, long offset,
                                           long beginTimeMs, long endTimeMs, String identity) throws Exception {
         FileInputStream in = null;
+        BufferedReader reader = null;
         long beginSecond = beginTimeMs / 1000;
         long endSecond = endTimeMs / 1000;
         try {
             in = new FileInputStream(fileName);
             in.getChannel().position(offset);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in, charset));
+            reader = new BufferedReader(new InputStreamReader(in, charset));
             String line;
             while ((line = reader.readLine()) != null) {
                 MetricNode node = MetricNode.fromFatString(line);
@@ -73,6 +74,9 @@ class MetricsReader {
                 }
             }
         } finally {
+        	if(reader != null) {
+        		reader.close();
+        	}
             if (in != null) {
                 in.close();
             }
@@ -90,10 +94,11 @@ class MetricsReader {
             lastSecond = list.get(list.size() - 1).getTimestamp() / 1000;
         }
         FileInputStream in = null;
+        BufferedReader reader = null;
         try {
             in = new FileInputStream(fileName);
             in.getChannel().position(offset);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in, charset));
+            reader = new BufferedReader(new InputStreamReader(in, charset));
             String line;
             while ((line = reader.readLine()) != null) {
                 MetricNode node = MetricNode.fromFatString(line);
@@ -109,6 +114,9 @@ class MetricsReader {
                 lastSecond = currentSecond;
             }
         } finally {
+        	if(reader != null) {
+        		reader.close();
+        	}
             if (in != null) {
                 in.close();
             }

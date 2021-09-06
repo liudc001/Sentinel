@@ -22,7 +22,12 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
  */
 public class FlowException extends BlockException {
 
-    public FlowException(String ruleLimitApp) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public FlowException(String ruleLimitApp) {
         super(ruleLimitApp);
     }
 

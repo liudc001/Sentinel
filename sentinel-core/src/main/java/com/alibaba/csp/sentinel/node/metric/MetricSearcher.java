@@ -110,8 +110,7 @@ public class MetricSearcher {
      * When identity is null, all metric between the time intervalMs will be read, otherwise, only the specific
      * identity will be read.
      */
-    public synchronized List<MetricNode> findByTimeAndResource(long beginTimeMs, long endTimeMs, String identity)
-        throws Exception {
+    public synchronized List<MetricNode> findByTimeAndResource(long beginTimeMs, long endTimeMs, String identity) throws Exception {
         List<String> fileNames = MetricWriter.listMetricFiles(baseDir, baseFileName);
         //RecordLog.info("pid=" + pid + ", findByTimeAndResource([" + beginTimeMs + ", " + endTimeMs
         //    + "], " + identity + ")");

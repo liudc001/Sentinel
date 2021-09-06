@@ -31,8 +31,7 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
 public class DefaultUrlBlockHandler implements UrlBlockHandler {
 
     @Override
-    public void blocked(HttpServletRequest request, HttpServletResponse response, BlockException ex)
-        throws IOException {
+    public void blocked(HttpServletRequest request, HttpServletResponse response, BlockException ex) throws IOException {
         // Directly redirect to the default flow control (blocked) page or customized block page.
         FilterUtil.blockRequest(request, response);
     }

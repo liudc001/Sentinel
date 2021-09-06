@@ -42,8 +42,7 @@ public class DefaultAuthorizationInterceptor implements AuthorizationInterceptor
     }
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (handler.getClass().isAssignableFrom(HandlerMethod.class)) {
             Method method = ((HandlerMethod) handler).getMethod();
 
@@ -54,8 +53,8 @@ public class DefaultAuthorizationInterceptor implements AuthorizationInterceptor
                     responseNoPrivilegeMsg(response, authAction.message());
                     return false;
                 }
+                
                 String target = request.getParameter(authAction.targetName());
-
                 if (!authUser.authTarget(target, authAction.value())) {
                     responseNoPrivilegeMsg(response, authAction.message());
                     return false;
@@ -67,7 +66,7 @@ public class DefaultAuthorizationInterceptor implements AuthorizationInterceptor
     }
 
     private void responseNoPrivilegeMsg(HttpServletResponse response, String message) throws IOException {
-        Result result = Result.ofFail(-1, message);
+        Result<?> result = Result.ofFail(-1, message);
         response.addHeader("Content-Type", "application/json;charset=UTF-8");
         response.getOutputStream().write(JSON.toJSONBytes(result));
     }

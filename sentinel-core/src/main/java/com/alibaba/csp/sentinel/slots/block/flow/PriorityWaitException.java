@@ -23,7 +23,12 @@ package com.alibaba.csp.sentinel.slots.block.flow;
  */
 public class PriorityWaitException extends RuntimeException {
 
-    private final long waitInMs;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private final long waitInMs;
 
     public PriorityWaitException(long waitInMs) {
         this.waitInMs = waitInMs;

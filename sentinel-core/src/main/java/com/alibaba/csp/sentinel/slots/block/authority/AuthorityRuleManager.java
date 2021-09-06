@@ -103,6 +103,7 @@ public final class AuthorityRuleManager {
         }
 
         private Map<String, Set<AuthorityRule>> loadAuthorityConf(List<AuthorityRule> list) {
+        	
             Map<String, Set<AuthorityRule>> newRuleMap = new ConcurrentHashMap<>();
 
             if (list == null || list.isEmpty()) {

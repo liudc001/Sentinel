@@ -33,7 +33,6 @@ public class SimpleWebAuthServiceImpl implements AuthService<HttpServletRequest>
         if (sentinelUserObj != null && sentinelUserObj instanceof AuthUser) {
             return (AuthUser) sentinelUserObj;
         }
-
         return null;
     }
 
