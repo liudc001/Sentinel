@@ -26,8 +26,6 @@ import com.alibaba.csp.sentinel.dashboard.client.SentinelApiClient;
 import com.alibaba.csp.sentinel.dashboard.domain.Result;
 import com.alibaba.csp.sentinel.dashboard.domain.vo.ResourceVo;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/resource")
 public class ResourceController {
 
-    private static Logger logger = LoggerFactory.getLogger(ResourceController.class);
+    //private static Logger logger = LoggerFactory.getLogger(ResourceController.class);
 
     @Autowired
     private SentinelApiClient httpFetcher;
@@ -56,8 +54,8 @@ public class ResourceController {
      * @return node statistics info.
      */
     @GetMapping("/machineResource.json")
-    public Result<List<ResourceVo>> fetchResourceChainListOfMachine(String ip, Integer port, String type,
-                                                                    String searchKey) {
+    public Result<List<ResourceVo>> fetchResourceChainListOfMachine(
+    		String ip, Integer port, String type, String searchKey) {
         if (StringUtil.isEmpty(ip) || port == null) {
             return Result.ofFail(-1, "invalid param, give ip, port");
         }

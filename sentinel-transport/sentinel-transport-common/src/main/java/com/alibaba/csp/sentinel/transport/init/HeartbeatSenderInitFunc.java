@@ -94,7 +94,7 @@ public class HeartbeatSenderInitFunc implements InitFunc {
                 }
             }
         }, 5000, interval, TimeUnit.MILLISECONDS);
-        RecordLog.info("[HeartbeatSenderInit] HeartbeatSender started: "
-            + sender.getClass().getCanonicalName());
+        
+        RecordLog.info("[HeartbeatSenderInit] HeartbeatSender started: " + sender.getClass().getCanonicalName());
     }
 }

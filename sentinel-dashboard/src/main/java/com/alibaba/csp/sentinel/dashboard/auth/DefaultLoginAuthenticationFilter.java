@@ -76,11 +76,13 @@ public class DefaultLoginAuthenticationFilter implements LoginAuthenticationFilt
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        
+    	HttpServletRequest httpRequest = (HttpServletRequest) request;
 
         String servletPath = httpRequest.getServletPath();
 
         // Exclude the urls which needn't auth
+        // 无需认证身份的url请求
         boolean authFilterExcludeMatch = authFilterExcludeUrls.stream()
                 .anyMatch(authFilterExcludeUrl -> PATH_MATCHER.match(authFilterExcludeUrl, servletPath));
         if (authFilterExcludeMatch) {
@@ -89,6 +91,7 @@ public class DefaultLoginAuthenticationFilter implements LoginAuthenticationFilt
         }
 
         // Exclude the urls with suffixes which needn't auth
+        // 无需认证身份的资源请求后缀名
         for (String authFilterExcludeUrlSuffix : authFilterExcludeUrlSuffixes) {
             if (StringUtils.isBlank(authFilterExcludeUrlSuffix)) {
                 continue;
@@ -105,6 +108,7 @@ public class DefaultLoginAuthenticationFilter implements LoginAuthenticationFilt
             }
         }
 
+        // 必须登录才能访问
         AuthService.AuthUser authUser = authService.getAuthUser(httpRequest);
 
         HttpServletResponse httpResponse = (HttpServletResponse) response;

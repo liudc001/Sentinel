@@ -40,8 +40,8 @@ public final class CommandCenterProvider {
             RecordLog.warn("[CommandCenterProvider] WARN: No existing CommandCenter found");
         } else {
             commandCenter = resolveCommandCenter;
-            RecordLog.info("[CommandCenterProvider] CommandCenter resolved: {}", resolveCommandCenter.getClass()
-                .getCanonicalName());
+            RecordLog.info("[CommandCenterProvider] CommandCenter resolved: {}", 
+            		resolveCommandCenter.getClass().getCanonicalName());
         }
     }
 

@@ -26,6 +26,7 @@ import com.alibaba.csp.sentinel.util.StringUtil;
  *
  * @author Eric Zhao
  */
+@SuppressWarnings("rawtypes")
 public class CommandHandlerProvider implements Iterable<CommandHandler> {
 
     private final SpiLoader<CommandHandler> spiLoader = SpiLoader.of(CommandHandler.class);

@@ -73,6 +73,7 @@ public class WebConfig implements WebMvcConfigurer {
      * for Web application.
      */
     @Bean
+    @SuppressWarnings("rawtypes")
     public FilterRegistrationBean sentinelFilterRegistration() {
         FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<>();
         registration.setFilter(new CommonFilter());
@@ -90,8 +91,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @PostConstruct
     public void doInit() {
-        Set<String> suffixSet = new HashSet<>(Arrays.asList(".js", ".css", ".html", ".ico", ".txt",
-            ".woff", ".woff2"));
+        Set<String> suffixSet = new HashSet<>(Arrays.asList(".js", ".css", ".html", ".ico", ".txt", ".woff", ".woff2"));
         // Example: register a UrlCleaner to exclude URLs of common static resources.
         WebCallbackManager.setUrlCleaner(url -> {
             if (StringUtil.isEmpty(url)) {
@@ -104,7 +104,8 @@ public class WebConfig implements WebMvcConfigurer {
         });
     }
 
-    @Bean
+	@Bean
+    @SuppressWarnings("rawtypes")
     public FilterRegistrationBean authenticationFilterRegistration() {
         FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<>();
         registration.setFilter(loginAuthenticationFilter);

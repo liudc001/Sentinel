@@ -43,11 +43,11 @@ public class DefaultAuthorizationInterceptor implements AuthorizationInterceptor
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (handler.getClass().isAssignableFrom(HandlerMethod.class)) {
+        if (handler.getClass().isAssignableFrom(HandlerMethod.class)) { // mvc method
             Method method = ((HandlerMethod) handler).getMethod();
 
             AuthAction authAction = method.getAnnotation(AuthAction.class);
-            if (authAction != null) {
+            if (authAction != null) { // 需要判断权限
                 AuthService.AuthUser authUser = authService.getAuthUser(request);
                 if (authUser == null) {
                     responseNoPrivilegeMsg(response, authAction.message());
